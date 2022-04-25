@@ -12,7 +12,6 @@ public class WordleClone {
         Scanner scn = new Scanner(System.in);
         String correctWord = selectWord();
         System.out.println(correctWord);
-
         while (noOfAttempts < 6) {
             for (int i = 0; i < attempts.size(); i++) {
                 System.out.println(attempts.get(i));

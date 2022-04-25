@@ -9,4 +9,5 @@ public class Main {
         WordleClone wc = new WordleClone();
         wc.playGame();
     }
+
 }
