@@ -19,10 +19,9 @@ public class WordleClone {
         ArrayList<String> attempts = new ArrayList<>();
         int noOfAttempts = 0;
         displayTitle();
-        System.out.println("Correct guess streak: " + levelNumber);
+        System.out.println("|| Correct guess streak: " + levelNumber + " ||");
         Scanner scn = new Scanner(System.in);
         String correctWord = selectWord();
-        System.out.println(correctWord);
         while (noOfAttempts < 6) {
             for (String value : attempts) {
                 System.out.print("| ");
