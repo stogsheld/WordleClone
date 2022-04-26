@@ -5,12 +5,24 @@ import java.util.Scanner;
 
 public class WordleClone {
 
+    public int levelNumber = 0;
+
+    public int getLevelNumber() {
+        return levelNumber;
+    }
+
+    public void setLevelNumber(int levelNumber) {
+        this.levelNumber = levelNumber;
+    }
+
     public void playGame() {
-        ArrayList<String> attempts = new ArrayList<String>();
+        ArrayList<String> attempts = new ArrayList<>();
         int noOfAttempts = 0;
         displayTitle();
+        System.out.println("Correct guess streak: " + levelNumber);
         Scanner scn = new Scanner(System.in);
         String correctWord = selectWord();
+        System.out.println(correctWord);
         while (noOfAttempts < 6) {
             for (String value : attempts) {
                 System.out.print("| ");
@@ -34,10 +46,11 @@ public class WordleClone {
         }
         System.out.println("Game Over.");
         System.out.println("Correct word was " + DesignClass.GREEN_BOLD_BRIGHT + correctWord + DesignClass.RESET);
+        System.out.println("Thanks for playing! You managed to get " + getLevelNumber() + " words in a row!");
     }
 
     private void checkGuessesLeft(int size) {
-        for (int i = 0; i < (6-size); i++) {
+        for (int i = 0; i < (6 - size); i++) {
             System.out.print("| ⬜⬜⬜⬜⬜ |");
         }
     }
@@ -46,7 +59,8 @@ public class WordleClone {
         if (attempt.equals(correctWord)) {
             System.out.println(DesignClass.GREEN_BOLD_BRIGHT + correctWord + " " + DesignClass.RESET);
             System.out.println("Correct! You win!");
-            System.exit(0);
+            setLevelNumber(getLevelNumber() + 1);
+            playAgain();
         } else {
             for (int i = 0; i < attempt.length(); i++) {
                 char currentCorrectLetter = correctWord.charAt(i);
@@ -62,6 +76,28 @@ public class WordleClone {
                 } else {
                     System.out.print(currentAttemptLetter);
                 }
+            }
+        }
+    }
+
+    private void playAgain() {
+        boolean choosing = true;
+        while (choosing) {
+            System.out.println("Would you like to play again? (Y/N)");
+            Scanner scn = new Scanner(System.in);
+            String playAgain = scn.nextLine().toLowerCase();
+            switch (playAgain) {
+                case "y":
+                    choosing = false;
+                    playGame();
+                    break;
+                case "n":
+                    choosing = false;
+                    System.out.println("Thanks for playing! You managed to get " + getLevelNumber() + " words in a row!");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Input not recognised.");
             }
         }
     }
