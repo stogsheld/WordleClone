@@ -46,6 +46,7 @@ public class WordleClone {
         System.out.println("Game Over.");
         System.out.println("Correct word was " + DesignClass.GREEN_BOLD_BRIGHT + correctWord + DesignClass.RESET);
         System.out.println("Thanks for playing! You managed to get " + getLevelNumber() + " words in a row!");
+        System.exit(1);
     }
 
     private void checkGuessesLeft(int size) {
@@ -93,14 +94,14 @@ public class WordleClone {
                 case "n":
                     choosing = false;
                     System.out.println("Thanks for playing! You managed to get " + getLevelNumber() + " words in a row!");
-                    System.exit(0);
+                    System.exit(1);
                     break;
                 default:
                     System.out.println("Input not recognised.");
             }
         }
     }
-
+    
     private String selectWord() {
         String chosenWord = null;
         int wordBankChosen = randomiser(4) + 1;
