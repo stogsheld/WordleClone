@@ -26,7 +26,7 @@ public class WordleClone {
             for (String value : attempts) {
                 System.out.print("| ");
                 checkWord(value, correctWord);
-                System.out.print(" |");
+                System.out.println(" |");
             }
             checkGuessesLeft(attempts.size());
             System.out.println();
@@ -47,11 +47,12 @@ public class WordleClone {
         System.out.println("Correct word was " + DesignClass.GREEN_BOLD_BRIGHT + correctWord + DesignClass.RESET);
         System.out.println("Thanks for playing! You managed to get " + getLevelNumber() + " words in a row!");
         System.exit(1);
+        scn.close();
     }
 
     private void checkGuessesLeft(int size) {
         for (int i = 0; i < (6 - size); i++) {
-            System.out.print("| ⬜⬜⬜⬜⬜ |");
+            System.out.println("| ----- |");
         }
     }
 
@@ -99,6 +100,7 @@ public class WordleClone {
                 default:
                     System.out.println("Input not recognised.");
             }
+            scn.close();
         }
     }
     
